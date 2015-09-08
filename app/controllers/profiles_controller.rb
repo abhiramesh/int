@@ -4,9 +4,10 @@ class ProfilesController < ApplicationController
 		@profile = current_user.profile
 	end
 
-	def update_profile
-		# @profile = current_user.profile
-		# @profile.update!(profile_params)
+	def update
+		@profile = Profile.find(params[:id])
+		@profile.update!(profile_params)
+		redirect_to add_profile_path
 	end
 
 	def get_schools
@@ -17,12 +18,8 @@ class ProfilesController < ApplicationController
 	    end
 	end
 
-	
-
-#    def psdfsfd
-#      params.require(:profile).permit(:image, :resume, :school, :user_id, :year, :major)
-#   end
-
-
-
+	private
+		def profile_params
+			params.require(:profile).permit(:image, :resume, :year, :major, :school)
+		end
 end

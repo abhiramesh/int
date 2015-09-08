@@ -16,11 +16,12 @@
 			<div class="profile-box">
 				<%= form_for @profile, :validate => true do |f| %>
 					<div><%= f.label :school, "University" %><br />
-					  <%= f.text_field :school %></div>
+					  <%= f.text_field :school %></div><br />
 					  <div><%= f.label :year, "Expected Graduation" %><br />
-					  <%= f.text_field :year %></div>
+					  <%= f.select :year, options_for_select(years, :selected => @profile.year)%><br /><br />
 					  <div><%= f.label :major %><br />
-					  <%= f.text_field :major %></div>
+					  <%= f.text_field :major %></div><br />
+				<%= f.submit %><br /><br />
 				<% end %>
 			</div>
 		</div>
