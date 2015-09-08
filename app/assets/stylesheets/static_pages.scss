@@ -5,6 +5,7 @@
 
 $blue: #0C5AA6;
 $black: #313131;
+$lightblue: #1C6CBA;
 
 
 @font-face {
@@ -43,6 +44,10 @@ input[type="submit"]{
 	max-width: 250px;
 }
 
+body {
+	background-color: #F6F6F6 !important;
+}
+
 a {
 	color: $black !important;
 	text-decoration: none !important;
@@ -65,6 +70,20 @@ a:hover {
 	color: #313131;
 }
 
-.devise-background {
-	background-color: #F6F6F6;
+.devise-box {
+	border: solid 1px #CCC;
+    margin: 40px 5px;
+    max-width: 550px;
+    box-shadow: 0px 0px 2px #CCC;
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.navbar {
+	background-color: white !important;
+	margin-bottom: 0px !important;
+	border-bottom: solid 2px $blue !important;
+	border-radius: 0px !important;
+	padding: 6px 0px;
 }

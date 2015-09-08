@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  resources :profiles
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :users
 
@@ -9,7 +10,11 @@ Rails.application.routes.draw do
     get "/logout" => "devise/sessions#destroy"
     get "join" => "devise/registrations#new"
   end
+
+  get '/add_profile', to: 'profiles#add_profile', as: "add_profile"
   
+  get '/get_schools', to: 'profiles#get_schools'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

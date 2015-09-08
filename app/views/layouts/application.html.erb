@@ -5,10 +5,38 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
   <%= javascript_include_tag 'application',"//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js", 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-default" role="navigation">
+  	    <div class="container">
+  	      <div class="navbar-header">
+  	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  	          <span class="sr-only">Toggle navigation</span>
+  	          <span class="icon-bar"></span>
+  	          <span class="icon-bar"></span>
+  	          <span class="icon-bar"></span>
+  	        </button>
+    	        <a class="navbar-brand" href="<%=root_path%>">
+    	        </a>
+  	      </div>
+  	      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  	        <ul class="nav navbar-nav navbar-right">
+  	          <% if !current_user %>
+                <% if current_page?(root_path) %>
+                <% end %>
+                <li class="nav_item"><a href="/join">Join</a></li>
+                <li class="nav_item"><a href="/login">Login</a></li>
+  	          <% else %>
+                <li><a href="">My Profile</a></li>
+  	            <li><a href="/logout">Logout</a></li>
+  	          <% end %>
+  	        </ul>
+  	      </div>
+  	    </div>
+  	</nav>
 
 <%= yield %>
 
