@@ -18,6 +18,27 @@ class ProfilesController < ApplicationController
 	    end
 	end
 
+	def upload_resume
+		file_content = params["file"].tempfile 
+		file_name = current_user.full_name + "/resume/" + "profileresume/" + current_user.profile.id.to_s
+		AWS.config(
+	    	:access_key_id => ENV["AWS_KEY"], 
+	    	:secret_access_key => ENV["AWS_SECRET"]
+	    )
+	  
+	    bucket_name = 'thrpoaraos'
+
+	    s3 = AWS::S3.new
+
+	    object = s3.buckets[bucket_name].objects[file_name].write(:file => file_content, :server_side_encryption => :aes256)
+	    
+	    profile = current_user.profile
+	    profile.resume = object.public_url.to_s
+	    profile.save
+	   
+		render json: "done"
+	end
+
 	private
 		def profile_params
 			params.require(:profile).permit(:image, :resume, :year, :major, :school)

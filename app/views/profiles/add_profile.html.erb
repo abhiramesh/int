@@ -8,8 +8,25 @@
 	<div class="row-fluid">
 		<div class="col-md-4">
 			<div class="profile-box">
+				<div class="profile-image">
+					sdf
+				</div>
 			</div>
 			<div class="profile-box">
+				<%= form_tag({:action => "upload_resume", :controller => "profiles"}, {:class => "dropzone", :id => "filedrop" }) do %>
+						<div class="fallback">
+							<input name="file" type="file" multiple />
+						</div>
+					<% end %>
+				<% if @profile.resume %>
+					<div class="file-box">
+						<a href="<%=@profile.resume%>" target="_blank">
+							<div class="file-inner-box">
+								Your Resume
+							</div>
+						</a>
+					</div>
+				<% end %>
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -45,3 +62,19 @@
       $("[name='school']").attr( "autocomplete", "on" );
       $( "[name='school']" ).autocomplete( "enable" );
 </script>
+
+<script type="text/javascript">
+	Dropzone.autoDiscover = false;
+	var dz = new Dropzone("#filedrop", {
+        url: "/upload_resume",
+        dictDefaultMessage: "Upload resume (PDF only)",
+        acceptedFiles: 'application/pdf',
+        dictInvalidFileType: 'Invalid file type - please upload a pdf'
+    });
+ 	dz.on("complete", function (file) {
+        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+            location.reload();
+        }
+    });
+</script>
+

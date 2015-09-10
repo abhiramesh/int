@@ -29,3 +29,40 @@ $lightblue: #1C6CBA;
 	padding: 10px;
 	font-size: 17px;
 }
+
+.profile-image {
+	border-radius: 300px;
+	padding: 10px;
+	width: 150px;
+	height: 150px;
+	border: solid 1px #EEE;
+}
+
+.file-box {
+	background: rgba(255,255,255,0.8);
+	position: relative;
+	display: inline-block;
+	margin: 5%;
+	cursor: pointer !important;
+	vertical-align: top;
+	border: 1px solid #acacac;
+	padding: 6px 6px 6px 6px;
+	border-radius: 3px;
+}
+
+.file-box:hover {
+	background: #F6F6F6;
+}
+
+.file-inner-box {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  background: #ebebeb;
+  border: none;
+  padding: 5px;
+  margin-bottom: 22px;
+  border-radius: 3px;
+}
+
