@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   
   get '/get_schools', to: 'profiles#get_schools'
 
+  get '/admin_dash', to: 'profiles#admin_dash'
+
   post '/upload_resume', :to => "profiles#upload_resume"
+
+  post '/upload_picture', :to => "profiles#upload_picture"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

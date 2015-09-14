@@ -1,5 +1,10 @@
 class ProfilesController < ApplicationController
 
+	def admin_dash
+		@profiles = Profile.all
+	end
+
+
 	def add_profile
 		@profile = current_user.profile
 	end
@@ -34,6 +39,29 @@ class ProfilesController < ApplicationController
 	    
 	    profile = current_user.profile
 	    profile.resume = object.public_url.to_s
+	    profile.save
+	   
+		render json: "done"
+	end
+
+	def upload_picture
+		file_content = Magick::Image.from_blob(params[:file].read)[0]
+		file_content = file_content.crop_resized!(250, 250, Magick::NorthGravity)
+
+		file_name = current_user.full_name + "/picture/" + "profilepicture" + 'cdar0rh'+ current_user.profile.id.to_s + 't5'
+		AWS.config(
+	    	:access_key_id => 'AKIAJLXZM52BO6BSJQTA', 
+	    	:secret_access_key => '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'
+	    )
+	  
+	    bucket_name = 'thrpoaraos'
+
+	    s3 = AWS::S3.new
+
+	    object = s3.buckets[bucket_name].objects[file_name].write(file_content.to_blob, :server_side_encryption => :aes256)
+
+	    profile = current_user.profile
+	    profile.image = object.public_url.to_s
 	    profile.save
 	   
 		render json: "done"

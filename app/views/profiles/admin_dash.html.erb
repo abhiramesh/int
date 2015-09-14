@@ -1,0 +1,36 @@
+<div class="container" align="center">
+	<div class="title">
+		Candidate Dashboard
+		<hr>
+	</div>
+		<% @profiles.each_slice(3) do |slice| %>
+			<div class="row">
+				<% slice.each do |profile| %>
+					<div class="col-md-4">
+						<div class="profile-box">
+							<div>
+								<%= profile.user.full_name %>
+							</div>
+							<div>
+								<img src="<%=profile.image%>" class="sm">
+							</div>
+							<br>
+							<div>
+								<%= profile.school %>
+							</div>
+							<div>
+							Graduating in <%= profile.year %>
+							</div>
+							<div>
+								Major: <%= profile.major.capitalize %>
+							</div>
+							<br>
+							<div>
+								<a href="<%=profile.resume%>" target="_blank">Click to view <%= profile.user.firstname.capitalize %>'s resume</a>
+							</div>
+						</div>
+					</div>
+				<% end %>	
+			</div>
+		<% end %>		
+</div>

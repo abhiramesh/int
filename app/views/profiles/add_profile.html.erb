@@ -8,24 +8,39 @@
 	<div class="row-fluid">
 		<div class="col-md-4">
 			<div class="profile-box">
-				<div class="profile-image">
-					sdf
-				</div>
+				<%= form_tag({:action => "upload_picture", :controller => "profiles"}, {:class => "dropzone", :id => "filedrop2" }) do %>
+					<% if @profile.image %>
+						<div class="profile-image">
+							<img src="<%=@profile.image%>">
+						</div>
+					<% else %>
+						<div class="profile-image">
+							sdfsdfsdf
+						</div>
+					<% end %>
+				<% end %>
 			</div>
 			<div class="profile-box">
 				<%= form_tag({:action => "upload_resume", :controller => "profiles"}, {:class => "dropzone", :id => "filedrop" }) do %>
 						<div class="fallback">
 							<input name="file" type="file" multiple />
 						</div>
-					<% end %>
-				<% if @profile.resume %>
-					<div class="file-box">
-						<a href="<%=@profile.resume%>" target="_blank">
+					<% if @profile.resume %>
+						<div class="file-box">
+							Your Resume
 							<div class="file-inner-box">
-								Your Resume
+								<img src="/assets/sample.png">
 							</div>
-						</a>
-					</div>
+						</div>
+					<% else %>
+						<div class="file-box">
+							<a href="<%=@profile.resume%>" target="_blank">
+								<div class="file-inner-box">
+									Upload Resume
+								</div>
+							</a>
+						</div>
+					<% end %>		
 				<% end %>
 			</div>
 		</div>
@@ -67,7 +82,7 @@
 	Dropzone.autoDiscover = false;
 	var dz = new Dropzone("#filedrop", {
         url: "/upload_resume",
-        dictDefaultMessage: "Upload resume (PDF only)",
+        dictDefaultMessage: "",
         acceptedFiles: 'application/pdf',
         dictInvalidFileType: 'Invalid file type - please upload a pdf'
     });
@@ -78,3 +93,19 @@
     });
 </script>
 
+<script type="text/javascript">
+	Dropzone.autoDiscover = false;
+
+    var dz2 = new Dropzone("#filedrop2", {
+        url: "/upload_picture",
+        dictDefaultMessage: "",
+        acceptedFiles: 'image/*',
+        dictInvalidFileType: 'Invalid file type - please upload a jpg or png'
+    });
+ 	dz2.on("complete", function (file) {
+        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+            location.reload();
+        }
+    });
+
+</script>
