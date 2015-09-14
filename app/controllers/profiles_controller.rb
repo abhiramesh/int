@@ -50,8 +50,8 @@ class ProfilesController < ApplicationController
 
 		file_name = current_user.full_name + "/picture/" + "profilepicture" + 'cdar0rh'+ current_user.profile.id.to_s + 't5'
 		AWS.config(
-	    	:access_key_id => 'AKIAJLXZM52BO6BSJQTA', 
-	    	:secret_access_key => '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'
+	    	:access_key_id => ENV["AWS_KEY"], 
+	    	:secret_access_key => ENV["AWS_SECRET"]
 	    )
 	  
 	    bucket_name = 'thrpoaraos'
