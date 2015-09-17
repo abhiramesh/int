@@ -19,10 +19,14 @@
 								<%= profile.school %>
 							</div>
 							<div>
-							Graduating in <%= profile.year %>
+								<% if profile.year %>
+									Graduating in <%= profile.year %>
+								<% end %>
 							</div>
 							<div>
-								Major: <%= profile.major.capitalize %>
+								<% if profile.major %>
+									Major: <%= profile.major.capitalize %>
+								<% end %>
 							</div>
 							<br>
 							<div>
