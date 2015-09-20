@@ -1,8 +1,17 @@
 class ProfilesController < ApplicationController
 
+	before_filter :auth, :only => :admin_dash
+	before_filter :authenticate_user!
+
 	def admin_dash
 		@profiles = Profile.all
 	end
+
+	def auth
+    	authenticate_or_request_with_http_basic('Administration') do |username, password|
+      		username == 'admin' && password == 'tenderoffer'
+    	end
+  	end
 
 
 	def add_profile

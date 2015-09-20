@@ -7,8 +7,6 @@ $blue: #0C5AA6;
 $black: #313131;
 $lightblue: #1C6CBA;
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
-
 .profile-box {
 	border: solid 1px #CCC;
     margin: 20px 5px;
@@ -21,8 +19,10 @@ $lightblue: #1C6CBA;
 }
 
 .title {
+	font-family: "Open Sans", sans-serif;
 	padding: 40px 0px 0px 0px;
 	font-size: 24px;
+	font-weight: 800;
 }
 
 .sub-title {

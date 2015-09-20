@@ -12,7 +12,11 @@
 								<%= profile.user.full_name %>
 							</div>
 							<div>
-								<img src="<%=profile.image%>" class="sm">
+								<% if profile.image %>
+									<img src="<%=profile.image%>" class="sm">
+								<% else %>
+									<img src="/assets/default.png" class="sm">
+								<% end %>
 							</div>
 							<br>
 							<div>
