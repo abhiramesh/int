@@ -25,9 +25,5 @@ module Intern
 
     config.serve_static_assets = true
 
-    config.assets.precompile += [
-      'logo.png'
-    ]
-
   end
 end
