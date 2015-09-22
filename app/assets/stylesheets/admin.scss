@@ -1,0 +1,21 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$blue: #0f3653;
+$black: #313131;
+$lightblue: #1C6CBA;
+$orange: #D96C00;
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,300);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+
+
+#filters {
+	margin-top: 20px;
+}
+
+#filterrow {
+	margin-top: -20px;
+}

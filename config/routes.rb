@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :profiletags
+  resources :tags
   resources :profiles
   devise_for :users, :controllers => { registrations: 'registrations' }
 
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
   post '/upload_resume', :to => "profiles#upload_resume"
 
   post '/upload_picture', :to => "profiles#upload_picture"
+
+  post '/update_tags', :to => "profiles#update_tags"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

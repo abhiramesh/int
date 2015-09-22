@@ -4,4 +4,7 @@ class Profile < ActiveRecord::Base
 	
 	belongs_to :user
 
+	has_many :profiletags
+	has_many :tags, through: :profiletags
+
 end

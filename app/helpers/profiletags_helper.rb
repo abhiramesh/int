@@ -1,0 +1,2 @@
+module ProfiletagsHelper
+end

@@ -35,6 +35,11 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", :validate => true %>
         </div>
 
+        <div class="field">
+          <%= label_tag "access_code" %><br />
+          <%= text_field_tag "access_code" %>
+        </div>
+
         <div class="actions">
           <%= f.submit "Sign up" %>
         </div>

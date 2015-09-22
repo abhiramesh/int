@@ -76,8 +76,21 @@ class ProfilesController < ApplicationController
 		render json: "done"
 	end
 
+	def update_tags
+		@profile = current_user.profile
+		@profile.profiletags.delete_all
+		if params["tags"]
+			params["tags"].each do |t|
+				if tag = Tag.find(t[1])
+					Profiletag.create(tag_id: t[1], profile_id: @profile.id)
+				end
+			end
+		end
+		redirect_to add_profile_path
+	end
+
 	private
 		def profile_params
-			params.require(:profile).permit(:image, :resume, :year, :major, :school)
+			params.require(:profile).permit(:image, :resume, :year, :major, :school, :interests)
 		end
 end

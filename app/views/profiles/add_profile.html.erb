@@ -10,6 +10,7 @@
 			<div class="profile-box">
 				<%= form_tag({:action => "upload_picture", :controller => "profiles"}, {:class => "dropzone", :id => "filedrop2" }) do %>
 					<% if @profile.image %>
+						Click to Edit	
 						<div class="profile-image">
 							<img src="<%=@profile.image%>">
 						</div>
@@ -34,6 +35,7 @@
 							<div class="file-inner-box">
 								<img src="/assets/sample.png">
 							</div>
+							(click to edit)
 						</div>
 					<% else %>
 						<div class="file-box">
@@ -52,13 +54,42 @@
 				<%= form_for @profile, :validate => true do |f| %>
 					<div><%= f.label :school, "University" %><br />
 					  <%= f.text_field :school %></div><br />
-					  <div><%= f.label :year, "Expected Graduation" %><br />
+					  <div><%= f.label :year, "Expected Graduation" %><br /></div>
 					  <%= f.select :year, options_for_select(years, :selected => @profile.year)%><br /><br />
 					  <div><%= f.label :major %><br />
 					  <%= f.text_field :major %></div><br />
 				<%= f.submit %><br /><br />
 				<% end %>
 			</div>
+			<div class="profile-box">
+				<div> Which of the following areas interest you? </div>
+					  <hr>
+					<%= form_tag(:action => "update_tags", :controller => "profiles") do %>
+					<div class="row">
+						<div class="col-md-2">
+							<div><%= label_tag "tags[:tag_1]", "Banking" %><br />
+						  	<%= check_box_tag "tags[:tag_1]", 1, Profiletag.where(tag_id: 1, profile_id: @profile.id).first %></div><br />
+						</div>
+						<div class="col-md-3">
+							<div><%= label_tag "tags[:tag_2]", "Private Equity" %><br />
+						  	<%= check_box_tag "tags[:tag_2]", 4, Profiletag.where(tag_id: 4, profile_id: @profile.id).first %></div><br />
+						</div>
+						<div class="col-md-3">
+							<div><%= label_tag "tags[:tag_3]", "Hedge Funds" %><br />
+						  	<%= check_box_tag "tags[:tag_3]", 2, Profiletag.where(tag_id: 2, profile_id: @profile.id).first %></div><br />
+						</div>
+						<div class="col-md-2">
+							<div><%= label_tag "tags[:tag_4]", "Consulting" %><br />
+						  	<%= check_box_tag "tags[:tag_4]", 3, Profiletag.where(tag_id: 3, profile_id: @profile.id).first %></div><br />
+						</div>
+						<div class="col-md-2">
+							<div><%= label_tag "tags[:tag_5]", "Tech" %><br />
+						  	<%= check_box_tag "tags[:tag_5]", 5, Profiletag.where(tag_id: 5, profile_id: @profile.id).first %></div><br />
+						</div>
+					</div>						  
+					<%= submit_tag "Update Interests" %><br /><br />
+					<% end %>
+				</div>
 		</div>
 	</div>
 </div>

@@ -10,8 +10,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-  	super
-  	Profile.create(user_id: current_user.id)
+  	if params["access_code"] == "recruit2015"
+	  	super
+	  	Profile.create(user_id: current_user.id)
+	else
+		redirect_to root_path
+	end
+
   end
 
   private
