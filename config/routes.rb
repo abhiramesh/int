@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :candidates
+  resources :firms
   resources :profiletags
   resources :tags
   resources :profiles
@@ -17,13 +19,19 @@ Rails.application.routes.draw do
   
   get '/get_schools', to: 'profiles#get_schools'
 
-  get '/admin_dash', to: 'profiles#admin_dash'
+  get '/admin_dash/:name', to: 'firms#admin_dash', as: "admin_dash"
 
   post '/upload_resume', :to => "profiles#upload_resume"
 
   post '/upload_picture', :to => "profiles#upload_picture"
 
   post '/update_tags', :to => "profiles#update_tags"
+
+  post '/update_position', :to => "candidates#update_position"
+
+  post '/dash_filter',:to => "firms#dash_filter"
+
+  get '/apply/:name', :to => "firms#apply"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

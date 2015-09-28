@@ -1,0 +1,85 @@
+<div class="container" align="center">
+	<div class="title">
+		Candidate Dashboard
+		<hr>
+	</div>
+		<div class="row" id="filterrow">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+			<div class="dropdown filters">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Filter By Position
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" align="left">
+			  	<%= form_tag(:action => "dash_filter", :controller => "firms") do %>
+				  	<% ["credit", "private equity", "real estate"].each do |position| %>
+					    <li> <%= check_box_tag "position[#{position}]" %> <%= label_tag "position[#{position}]", "#{position.capitalize}" %></li>
+				    <% end %>
+				  	<%= submit_tag "Filter" %>
+				<% end %>
+				<li class="pad"> <u><a href="<%=admin_dash_path(@firm.name)%>">Reset filters </a></u></li>
+			  </ul>
+			</div>
+		</div>
+	</div>
+		<% @candidates.each_slice(3) do |slice| %>
+			<div class="row">
+				<% slice.each do |candidate| %>
+					<div class="col-md-4">
+						<div class="profile-box" style="min-height:200px;">
+							<div class="profile-name">
+								<%= candidate.profile.user.full_name %>
+							</div>
+							<br>
+							<div>
+								<%= candidate.profile.school %>
+							</div>
+							<div>
+								<% if candidate.profile.year %>
+									Graduating in <%= candidate.profile.year %>
+								<% end %>
+							</div>
+							<div>
+								<% if candidate.profile.major %>
+									Major: <%= candidate.profile.major.capitalize %>
+								<% end %>
+							</div>
+							<div>
+								<% if candidate.profile.gpa %>
+									GPA: <%= candidate.profile.gpa %>
+								<% end %>
+							</div>
+							<div>
+								<% if candidate.position %>
+									Interested in: <%= candidate.position %> 
+								<% end %>
+							</div>
+							<div>
+								<% if candidate.profile.profiletags.first %>
+									Interested in: <%= candidate.profile.tags.map(&:name).join(', ') %> 
+								<% end %>
+							</div>
+							<br>
+							<div>
+								<% if candidate.profile.resume %>
+									<u><a href="<%=candidate.profile.resume%>" target="_blank">Click to view <%= candidate.profile.user.firstname.capitalize %>'s resume</a></u>
+								<% else %>
+									No Resume Uploaded
+								<% end %>
+							</div>
+						</div>
+					</div>
+				<% end %>	
+			</div>
+		<% end %>		
+</div>

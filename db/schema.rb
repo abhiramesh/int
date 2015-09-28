@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922012611) do
+ActiveRecord::Schema.define(version: 20150927225605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidates", force: :cascade do |t|
+    t.integer  "firm_id"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "position"
+  end
+
+  create_table "firms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -26,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150922012611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "interests"
+    t.float    "gpa"
   end
 
   create_table "profiletags", force: :cascade do |t|
@@ -39,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150922012611) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "firm_id"
   end
 
   create_table "users", force: :cascade do |t|

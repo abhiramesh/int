@@ -8,5 +8,21 @@ module ApplicationHelper
     	[["2015"],["2016"],["2017"],["2018"],["2019"]]
   	end
 
+  	def gpa
+  		[[3.0],[3.1],[3.2],[3.3],[3.4],[3.5],[3.6],[3.7],[3.8],[3.9],[4.0]]
+  	end
+
+  	def resource_name
+	    :user
+	end
+
+  	def resource
+    	@resource ||= User.new
+  	end
+
+	def devise_mapping
+		@devise_mapping ||= Devise.mappings[:user]
+	end
+
 
 end

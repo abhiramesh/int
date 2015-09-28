@@ -12,10 +12,19 @@ $orange: #D96C00;
 @import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
 
 
-#filters {
+.filters {
 	margin-top: 20px;
 }
 
 #filterrow {
 	margin-top: -20px;
+}
+
+.dropdown-menu input[type="submit"] {
+	padding: 5px;
+    font-size: 12px;
+}
+
+.dropdown-menu {
+	padding-left: 20px !important;
 }

@@ -7,7 +7,6 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'devise'
 gem 'newrelic_rpm'
-gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
 gem 'aws-sdk', '~> 1.0'
 gem "rmagick", :require => "RMagick"
 
