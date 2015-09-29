@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
 
-	before_filter :authenticate_user!
-
+	before_filter :authenticate_user!	
 
 	def add_profile
 		@profile = current_user.profile

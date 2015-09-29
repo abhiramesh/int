@@ -10,9 +10,11 @@
 		</div>
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-1">
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
+			<br>
+			<a href="<%=download_book_path(@firm.id)%>" type="button" class="btn btn-default">Download Resume Book</a>
 		</div>
 		<div class="col-md-2">
 			<div class="dropdown filters">
@@ -32,6 +34,7 @@
 			</div>
 		</div>
 	</div>
+	<hr>
 		<% @candidates.each_slice(3) do |slice| %>
 			<div class="row">
 				<% slice.each do |candidate| %>

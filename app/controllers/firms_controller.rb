@@ -3,12 +3,14 @@ class FirmsController < ApplicationController
 	before_filter :auth, :only => :admin_dash
 	before_filter :authenticate_user!, :except => :apply
 
+	require 'combine_pdf'
+
 	def auth
     	authenticate_or_request_with_http_basic('Administration') do |username, password|
       		username == 'admin' && password == 'tenderoffer'
     	end
   	end
-  	
+
 
 	def apply
 		@firm = Firm.find_by_name(params[:name])
@@ -22,6 +24,20 @@ class FirmsController < ApplicationController
 		else
 			@candidates = @firm.candidates
 		end
+		
+	end
+
+	def download_book
+		@firm = Firm.find(params[:firm_id])
+		@candidates = @firm.candidates
+
+		pdf = CombinePDF.new
+		@candidates.each do |candidate|
+			if candidate.profile.resume
+				pdf << CombinePDF.parse(Net::HTTP.get(URI.parse(candidate.profile.resume)))
+			end
+		end
+		send_data pdf.to_pdf, filename: "combined_resume_book.pdf", type: "application/pdf"
 	end
 
 	def dash_filter

@@ -9,6 +9,7 @@ gem 'devise'
 gem 'newrelic_rpm'
 gem 'aws-sdk', '~> 1.0'
 gem "rmagick", :require => "RMagick"
+gem "combine_pdf"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
