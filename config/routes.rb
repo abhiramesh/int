@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :users
 
   devise_scope :user do
-    get "/login" => "devise/sessions#new"
+    get "/login" => "devise/sessions#new", as: "login"
     get "/logout" => "devise/sessions#destroy"
-    get "join" => "devise/registrations#new"
+    get "/join" => "devise/registrations#new"
   end
 
   get '/add_profile', to: 'profiles#add_profile', as: "add_profile"

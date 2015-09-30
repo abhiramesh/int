@@ -14,6 +14,7 @@ class FirmsController < ApplicationController
 
 	def apply
 		@firm = Firm.find_by_name(params[:name])
+		@minimum_password_length = 8
 	end
 
 	def admin_dash

@@ -70,10 +70,11 @@ a:hover {
 	background: none;
 }
 
-.message {
+label.message {
 	color: red;
 	font-size: 12px;
 	padding: 0px;
+	position: absolute;
 }
 
 

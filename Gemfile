@@ -10,6 +10,7 @@ gem 'newrelic_rpm'
 gem 'aws-sdk', '~> 1.0'
 gem "rmagick", :require => "RMagick"
 gem "combine_pdf"
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
