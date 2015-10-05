@@ -1,10 +1,19 @@
 <div class="container" align="center">
-	<div class="title">
-		Welcome! Add the information below to complete your profile.
-	</div>
-	<div class="sub-title">
-		We only accept complete profiles, so make sure to fill everything out!
-	</div>
+	<% if @profile.resume && @profile.school && @profile.major && @profile.year && @profile.gpa %>
+		`<div class="title">
+			Thanks! We have all your info and will be in touch soon.
+		</div>
+		<div class="sub-title">
+			You have until 11:59PM on October 8, 2015 to edit/change this information.
+		</div>
+	<% else %>
+		<div class="title">
+			Welcome! Add the information below to complete your profile.
+		</div>
+		<div class="sub-title">
+			We only accept complete profiles, so make sure to fill everything out!
+		</div>
+	<% end %>
 	<div class="row-fluid">
 		<div class="col-md-4">
 			<div class="profile-box">
