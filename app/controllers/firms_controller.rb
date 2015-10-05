@@ -1,7 +1,7 @@
 class FirmsController < ApplicationController
 
-	before_filter :auth, :only => :admin_dash
-	before_filter :authenticate_user!, :except => :apply
+	before_filter :auth, :only => [:admin_dash, :download_book]
+	before_filter :authenticate_user!, :except => [:apply, :admin_dash, :download_book]
 
 	require 'combine_pdf'
 

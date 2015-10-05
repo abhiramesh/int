@@ -74,16 +74,16 @@
 						<%= form_tag(:action => "update_position", :controller => "candidates") do %>
 						<div class="row">
 							<div class="col-md-4">
-								<div><%= label_tag "position_credit", "Credit" %><br />
-							  	<%= radio_button_tag "position", "credit" %></div><br />
+								<div><%= label_tag "position_credit", "Credit"%><br />
+							  	<%= radio_button_tag "position", "credit", @profile.candidates.first.position == "credit" %></div><br />
 							</div>
 							<div class="col-md-4">
 								<div><%= label_tag "position_private_equity", "Private Equity" %><br />
-							  	<%= radio_button_tag "position", "private equity" %></div><br />
+							  	<%= radio_button_tag "position", "private equity", @profile.candidates.first.position == "private equity" %></div><br />
 							</div>
 							<div class="col-md-4">
 								<div><%= label_tag "position_real_estate", "Real Estate" %><br />
-							  	<%= radio_button_tag "position", "real estate" %></div><br />
+							  	<%= radio_button_tag "position", "real estate", @profile.candidates.first.position == "real estate" %></div><br />
 							</div>
 						</div>						  
 						<%= submit_tag "Submit" %><br /><br />
