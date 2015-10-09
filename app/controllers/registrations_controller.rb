@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-  	if params["access_code"] == "recruit2015"
+  	if params["access_code"] == "itsnowover"
       super
       if current_user
   	  	profile = Profile.create(user_id: current_user.id)
