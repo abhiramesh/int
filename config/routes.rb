@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get '/download_book/:firm_id', :to => "firms#download_book", as: "download_book"
 
+  get '/download_xls', :to => "firms#download_xls", as: "download_xls"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

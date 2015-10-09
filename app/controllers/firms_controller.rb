@@ -1,7 +1,7 @@
 class FirmsController < ApplicationController
 
-	before_filter :auth, :only => [:admin_dash, :download_book, :dash_filter]
-	before_filter :authenticate_user!, :except => [:apply, :admin_dash, :download_book, :dash_filter]
+	before_filter :auth, :only => [:admin_dash, :download_book, :dash_filter, :download_xls]
+	before_filter :authenticate_user!, :except => [:apply, :admin_dash, :download_book, :dash_filter, :download_xls]
 
 	require 'combine_pdf'
 
@@ -26,6 +26,11 @@ class FirmsController < ApplicationController
 			@candidates = @firm.candidates
 		end
 		
+	end
+
+	def download_xls
+		@candidates = Candidate.all
+		send_data @candidates.to_csv
 	end
 
 	def download_book
