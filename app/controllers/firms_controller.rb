@@ -29,17 +29,22 @@ class FirmsController < ApplicationController
 	end
 
 	def download_book
-		@firm = Firm.find(params[:firm_id])
-		@candidates = @firm.candidates
+		@candidate = Candidate.find(params[:firm_id])
 
-		pdf = CombinePDF.new
-		@candidates.each do |candidate|
-			if candidate.profile.resume
-				pdf << CombinePDF.parse(Net::HTTP.get(URI.parse(candidate.profile.resume)))
-				send_data pdf.to_pdf, filename: "{candidate.profile.user.full_name}"+"_resume", type: "application/pdf"
-			end
-		end
+		# pdf = CombinePDF.new
+		# @candidates.each do |candidate|
+		# 	if candidate.profile.resume
+		# 		pdf << CombinePDF.parse(Net::HTTP.get(URI.parse(candidate.profile.resume)))
+		# 		send_data pdf.to_pdf, filename: "{candidate.profile.user.full_name}"+"_resume", type: "application/pdf"
+		# 	end
+		# end
 		#send_data pdf.to_pdf, filename: "combined_resume_book.pdf", type: "application/pdf"
+
+		if @candidate.profile.resume
+			send_data @candidate.profile.resume,
+			    :filename => "#{@candidate.profile.user.full_name}.pdf",
+			    :type => "application/pdf"
+		end
 	end
 
 	def dash_filter

@@ -16,8 +16,6 @@
 		<div class="col-md-1">
 		</div>
 		<div class="col-md-3">
-			<br>
-			<a href="<%=download_book_path(@firm.id)%>" type="button" class="btn btn-default">Download Resume Book</a>
 		</div>
 		<div class="col-md-2">
 			<div class="dropdown filters">
@@ -79,6 +77,8 @@
 							<div>
 								<% if candidate.profile.resume %>
 									<u><a href="<%=candidate.profile.resume%>" target="_blank">Click to view <%= candidate.profile.user.firstname.capitalize %>'s resume</a></u>
+									<br>
+									<a href="<%=download_book_path(candidate.id)%>" type="button" class="btn btn-default">Download Resume</a>
 								<% else %>
 									No Resume Uploaded
 								<% end %>
